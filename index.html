@@ -9,26 +9,33 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+    <!-- Main Container -->
     <div class="container-xxl">
+        <!-- Jumbotron -->
         <header class="jumbotron p-5 mb-4 rounded-3">
             <h1 class="display-5 fw-bold text-dark">Weather Dashboard</h1>
         </header>
-        <div class="row m-9">
-            <div class="col-3">
+
+        <!-- Main Body -->
+        <main id="main" class="row m-9">
+            <!-- City Search/Recent Searches Column -->
+            <div id="searchbox" class="col-3">
                 <div class="d-grid gap-2 mx-auto">
                     <h2>Search for a City:</h2>
                     <input id="city_search" type="text" class="form-control" placeholder="Austin">
-                    <button id="btnSubmit" class="btn btn-primary btn-lg m-1">Submit</button>
+                    <button id="btnSubmit" class="btn btn-primary m-1">Submit</button>
                 </div>
-                <div id="previous_searches" class="d-grid gap-2 border-top mx-auto p-2">
-                    <button class="btn btn-secondary btn-lg">Placeholder</button>
-                    <button class="btn btn-secondary btn-lg">Placeholder</button>
-                    <button class="btn btn-secondary btn-lg">Placeholder</button>
-                    <button class="btn btn-secondary btn-lg">Placeholder</button>
-                    <button class="btn btn-secondary btn-lg">Placeholder</button>
+                <div id="previous_searches" class="d-grid gap-2 border-top mx-auto pt-2">
+                    <button class="btn btn-secondary m-1">Placeholder</button>
+                    <button class="btn btn-secondary m-1">Placeholder</button>
+                    <button class="btn btn-secondary m-1">Placeholder</button>
+                    <button class="btn btn-secondary m-1">Placeholder</button>
+                    <button class="btn btn-secondary m-1">Placeholder</button>
                 </div>
             </div>
-            <div class="col-9">
+            <!-- Current Forecast/Future Forecast -->
+            <div id="forecastbox" class="col-9">
+                <!-- Current Forecast -->
                 <div class="border border-2 border-dark m-2">
                     <h2>City Name</h2>
                     <p>Temperature</p>
@@ -36,47 +43,53 @@
                     <p>Humidity</p>
                     <p>UV Index</p>
                 </div>
+                <!-- 5 Day Forecast Section -->
                 <div class="row m-2">
                     <h3>5-Day Forecast:</h3>
-                    <div class="card text-white bg-dark m-1" style="max-width: 10rem;">
+                    <!-- Card Group Parent Container -->
+                    <div class="card-group">
+                        <!-- Individual Card Representing Each Day -->
+                    <div class="card text-white bg-dark m-1">
                         <div class="card-header">Date</div>
                         <div class="card-body">
                           <h5 class="card-title">Dark card title</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark m-1" style="max-width: 10rem;">
+                    <div class="card text-white bg-dark m-1">
                         <div class="card-header">Date</div>
                         <div class="card-body">
                           <h5 class="card-title">Dark card title</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark m-1" style="max-width: 10rem;">
+                    <div class="card text-white bg-dark m-1">
                         <div class="card-header">Date</div>
                         <div class="card-body">
                           <h5 class="card-title">Dark card title</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark m-1" style="max-width: 10rem;">
+                    <div class="card text-white bg-dark m-1">
                         <div class="card-header">Date</div>
                         <div class="card-body">
                           <h5 class="card-title">Dark card title</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark m-1" style="max-width: 10rem;">
+                    <div class="card text-white bg-dark m-1">
                         <div class="card-header">Date</div>
                         <div class="card-body">
                           <h5 class="card-title">Dark card title</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
