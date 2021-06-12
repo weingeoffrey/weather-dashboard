@@ -1,0 +1,8 @@
+section {
+    display: flex;
+}
+
+.jumbotron {
+    background-image: url('../images/weather-header-NEW.jpg');
+    background-size: cover;
+}
