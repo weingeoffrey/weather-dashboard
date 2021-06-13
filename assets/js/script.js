@@ -94,7 +94,7 @@ var getForecast = function(citySearch) {
                     $('#current_forecast').empty();
 
                     // append elements to the current forecast box
-                    $('#current_forecast').append('<h2>' + citySearch + " " + currentDate + '<img src=http://openweathermap.org/img/wn/' + currentIcon + '@2x.png>' + '</h2>');
+                    $('#current_forecast').append('<h2>' + citySearch + " " + currentDate + '<img src=https://openweathermap.org/img/wn/' + currentIcon + '@2x.png>' + '</h2>');
                     $('#current_forecast').append('<p>Temperature: ' + currentTemp + " ℉" + '</p>');
                     $('#current_forecast').append('<p>Wind: ' + currentWind + " MPH" + '</p>');
                     $('#current_forecast').append('<p>Humidity: ' + currentHumidity + "%" + '</p>');
