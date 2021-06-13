@@ -126,7 +126,7 @@ var getForecast = function(citySearch) {
                     // loop through each entry in the fiveDayForecast object and create a corresponding card
                     fiveDayForecast.forEach(function(dayForecast) {
                         var weatherCard = $("<div>").attr({"class": "card text-white bg-dark m-1"});
-                        var weatherCardHeader = $("<div>").attr({"class": "card-header"}).html('<h5>' + dayForecast.date + '<img src=http://openweathermap.org/img/wn/' + dayForecast.icon + '@2x.png>' + '</h5>');
+                        var weatherCardHeader = $("<div>").attr({"class": "card-header"}).html('<h5>' + dayForecast.date + '<img src=https://openweathermap.org/img/wn/' + dayForecast.icon + '@2x.png>' + '</h5>');
                         var weatherCardBody = $("<div>").attr({"class": "card-body"});
                         var weatherCardTemp = $("<p>").attr({"class": "card-text"}).text("Temp: " + dayForecast.temp + " ℉");
                         var weatherCardWind = $("<p>").attr({"class": "card-text"}).text("Wind: " + dayForecast.wind + " MPH");
