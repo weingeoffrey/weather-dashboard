@@ -1,6 +1,27 @@
-$("#btnSubmit").click(function() {
-    var citySearch = $('#city_search').val();
+// Function to load searches from localstorage
+var loadSearches = function() {
+    searches = JSON.parse(localStorage.getItem("searches"));
 
+    if (!searches) {
+        searches = [];
+    }
+
+    // Clear out the previous searches to ensure no duplicates are generated
+    $('#previous_searches').empty();
+
+    // Create the elements for the previous searches
+    searches.forEach(function(search) {
+        $('#previous_searches').append('<button class="btn btn-secondary m-1 searchbtns">' + search + '</button>')
+    })
+}
+
+// Function to save searches to localstorage
+var saveSearches = function() {
+    localStorage.setItem("searches", JSON.stringify(searches));
+}
+
+// Function to pull weather data from OpenWeatherMap API and populate DOM elements
+var getForecast = function(citySearch) {
     // Fetch the cities lat/long
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + 
         citySearch + '&units=imperial&appid=6a2c1ceff53c48a68b5e414a71aa27d0'
@@ -9,10 +30,9 @@ $("#btnSubmit").click(function() {
             return response.json();
         })
         .then(function(response) {
+            // Get lat/lon from the city search API to get more in depth results
             var cityLat = response.coord.lat;
-            console.log(cityLat);
             var cityLon = response.coord.lon;
-            console.log(cityLon);
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' +
             cityLat +
@@ -80,6 +100,7 @@ $("#btnSubmit").click(function() {
                     $('#current_forecast').append('<p>Humidity: ' + currentHumidity + "%" + '</p>');
                     
 
+                    // Change background of span based off of UV index rating
                     if (currentUVI < 2) {
                         $('#current_forecast').append('<p>UV Index: <span class="bg-success text-white p-1 rounded">' + currentUVI + '</span></p>');
                     }
@@ -88,6 +109,15 @@ $("#btnSubmit").click(function() {
                     }
                     else if (currentUVI > 8) {
                         $('#current_forecast').append('<p>UV Index: <span class="bg-danger text-white p-1 rounded">' + currentUVI + '</span></p>');
+                    }
+                    
+                    // Check to see if 5-day forecast header exists, to eliminate duplicates
+                    if ($('#five_day_header').length) {
+                        $('#five_day_header').remove();
+                        $('#five_day').prepend("<h3 id='five_day_header'>5-Day Forecast:</h3>")
+                    }
+                    else {
+                        $('#five_day').prepend("<h3 id='five_day_header'>5-Day Forecast:</h3>")
                     }
 
                     // empty out the extended forecast box
@@ -113,6 +143,52 @@ $("#btnSubmit").click(function() {
                     })
                 })
         })
+}
+
+// Load initial searches from localstorage
+loadSearches();
+
+// Dynamically created buttons will work with this below
+$("#previous_searches").on("click", ".searchbtns", function() {
+    // Get the city to search from the button's value
+    var citySearch = $(this).text();
+    getForecast(citySearch);
+})
+
+// Check to see if the Submit button is pressed
+$("#btnSubmit").click(function() {
+    // Get the city to search for from input field
+    var citySearch = $('#city_search').val();
+
+    if (citySearch != "") {
+        // Check to see if this was previously searched for
+        var previousSearch = searches.includes(citySearch);
+
+        if (!previousSearch) {
+            searches.push(citySearch);
+            saveSearches();
+        }
+        if ($('#alert').length) {
+            // Remove any previous alerts
+            $('#alert').remove();
+        }
+        getForecast(citySearch);
+        loadSearches();
+    }
+    else {
+        // Check to see if an alert already exists
+        if ($('#alert').length) {
+            // Remove any previous alerts
+            $('#alert').remove();
+            // Create new alert
+            $('#searchbox').prepend('<div class="alert alert-warning" role="alert" id="alert">Please ensure you enter a City</div>');
+        }
+        // If no alerts already exist
+        else {
+            // Create new alert
+            $('#searchbox').prepend('<div class="alert alert-warning" role="alert" id="alert">Please ensure you enter a City</div>');
+        }
+    }
 })
 
 // JQuery Media Query to adjust columns on smaller screens

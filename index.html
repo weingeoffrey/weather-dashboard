@@ -21,16 +21,11 @@
             <!-- City Search/Recent Searches Column -->
             <div id="searchbox" class="col-3">
                 <div class="d-grid gap-2 mx-auto">
-                    <h2>Search for a City:</h2>
-                    <input id="city_search" type="text" class="form-control" placeholder="Austin">
+                    <label for="city_search" class="form-label">Search for a City:</label>
+                    <input id="city_search" type="text" class="form-control" placeholder="Austin" value="Austin" required>
                     <button id="btnSubmit" class="btn btn-primary m-1">Submit</button>
                 </div>
                 <div id="previous_searches" class="d-grid gap-2 border-top mx-auto pt-2">
-                    <button class="btn btn-secondary m-1">Placeholder</button>
-                    <button class="btn btn-secondary m-1">Placeholder</button>
-                    <button class="btn btn-secondary m-1">Placeholder</button>
-                    <button class="btn btn-secondary m-1">Placeholder</button>
-                    <button class="btn btn-secondary m-1">Placeholder</button>
                 </div>
             </div>
             <!-- Current Forecast/Future Forecast -->
@@ -39,8 +34,7 @@
                 <div id="current_forecast" class="border border-2 border-dark m-2">
                 </div>
                 <!-- 5 Day Forecast Section -->
-                <div class="row m-2">
-                    <h3>5-Day Forecast:</h3>
+                <div id="five_day" class="row m-2">
                     <!-- Card Group Parent Container -->
                     <div id="extended-forecast-parent" class="card-group">
                         <!-- Individual Card Representing Each Day -->
